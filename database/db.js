@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { Pool, Client } = require("pg");
+const { OslashException } = require("../exceptions/oslashException");
 
 let client, pool;
 
@@ -29,7 +30,7 @@ const dbconnect = async (query, params) => {
     }
   } catch (error) {
     console.error("Error in query ", query, params);
-    return null;
+    throw new OslashException(500, `Error in query ${query}, ${params}`);
   }
 };
 
