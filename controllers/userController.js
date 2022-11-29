@@ -1,6 +1,3 @@
-const dbconnect = require("../database/db");
-const bcrypt = require("../util/bcrypt");
-const jwt = require("jsonwebtoken");
 const userService = require("../service/userService");
 const { OslashException } = require("../exceptions/oslashException");
 
@@ -43,7 +40,7 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error(error);
     if (error instanceof OslashException) {
-      res.status(error.status).send(error.message);
+      res.status(error.errorCode).send(error.errorMessage);
     }
     res.status(500).send("Internal Server Error");
   }

@@ -21,7 +21,10 @@ app.use('/api-docs', basicAuth({
 }), swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 const userRoute = require("./routes/userRoute");
+const shortcutRoute = require("./routes/shortcutRoute");
+
 app.use('/users', userRoute);
+app.use('/shortcut', shortcutRoute);
 
 const dbconnect = require("./database/db");
 

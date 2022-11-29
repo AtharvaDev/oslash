@@ -140,9 +140,6 @@
           "200": {
             "description": "OK"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -260,6 +257,277 @@
           {
             "name": "authorization",
             "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/createShortcut": {
+      "post": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API for creating a shortcut",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Shortcut details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "shortlink": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "shortlink",
+                "url",
+                "description"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/getShortcuts": {
+      "get": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API to get details of all the shortcuts",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/getShortcut": {
+      "get": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API to get details of a shortcut",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/updateShortcut": {
+      "put": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API to update a shortcut",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Shortcut details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "shortlink": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "shortlink",
+                "url",
+                "description"
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/deleteShortcut": {
+      "delete": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API to delete a shortcut",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/filterShortcuts": {
+      "get": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API to sort shortcuts based on shortlink, description and created_date in ASC or DESC order",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shortcut/searchShortcuts": {
+      "get": {
+        "tags": [
+          "Shortcut Module"
+        ],
+        "description": "API to search shortcuts based on shortlink, description and url",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
             "type": "string"
           }
         ],

@@ -30,7 +30,7 @@ const dbconnect = async (query, params) => {
     }
   } catch (error) {
     console.error("Error in query ", query, params);
-    throw new OslashException(500, `Error in query ${query}, ${params}`);
+    // throw new OslashException(500, `Error in query ${query}, ${params}`);
   }
 };
 
